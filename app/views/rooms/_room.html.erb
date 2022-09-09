@@ -1,0 +1,16 @@
+<%#= turbo_stream_from room %>
+
+<%#= turbo_frame_tag "room" do %>
+  <p id="<%= dom_id room %>">
+    <strong>Room:</strong>
+    <%= room.name %> 
+    <br>
+    <% if current_user %>
+      <%= button_to('Join', room_join_path(room.id)) %>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to "Show this room", room, "data-turbo-frame": "_top" %>
+    <%#= button_to "Destroy this room", room, method: :delete, "data-turbo-frame": "_top"  %>
+  </p>
+<%#end %>

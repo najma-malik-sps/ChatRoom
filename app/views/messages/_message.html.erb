@@ -1,0 +1,9 @@
+<p id="<%= dom_id message %>" style="border:1px dotted black;">
+  <%= message.created_at.to_s(:short) %> <%= message.user.email %>:
+  <br>
+  &nbsp;<%= message.content %>
+  &nbsp;
+  <%= turbo_frame_tag "edit_message", style: "display: inline; border: none;" do %>
+    <%= link_to "Edit", edit_room_message_path(room_id: message.room_id, id: message.id) %>
+  <% end %>
+</p>

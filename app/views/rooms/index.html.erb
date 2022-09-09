@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Rooms</h1>
+
+<div>
+  <strong>New Room:</strong>
+  <%= turbo_frame_tag "New room", src: new_room_path, target: "_top" %>
+</div>
+
+
+<%#= link_to "New room", new_room_path %>
+
+<br>
+
+<% if current_user %>
+
+  <%= button_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+<% end %>
+
+<br>
+
+<h3>All Rooms</h3>
+<div id="rooms" style="border:1px solid green;">
+  <% @rooms.each do |room| %>
+    <%= turbo_frame_tag "room", autoscroll: "true" do %>
+      <%= render room %>
+    <% end %>
+  <% end %>
+</div>
+
+<br><br><br>

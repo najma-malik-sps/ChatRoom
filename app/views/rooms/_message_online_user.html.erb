@@ -1,0 +1,28 @@
+<br>
+
+<div id="online_users">
+  Users Online: 
+  <% room.users.each do |user| %>
+    <p id="<%= dom_id user%>" >
+      <%= user.online? ? user.email : next %>
+    </p>
+  <% end %>
+</div>
+
+<br>
+
+<div style="border:1px solid black;">
+  <strong>Chat here:</strong><br><br>
+  <div id="messages" style="height: 300px; overflow-x: auto;">
+    <%= render room.messages %>
+  </div>
+
+  <br>
+
+  <div>
+    <!-- <%#= link_to "New message", new_room_message_path(room) %> -->
+    <%= turbo_frame_tag "new message", src: new_room_message_path(room), target: "_top" %>
+  </div>
+</div>
+
+<br><br>
